@@ -1,4 +1,4 @@
-export default {
+const $ = {
   loading: () => {
 
   },
@@ -26,3 +26,5 @@ export default {
 
   },
 }
+
+export default $;
