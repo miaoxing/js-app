@@ -19,10 +19,10 @@ const $ = {
 
   },
 
-  get: () => {
+  get: async () => {
 
   },
-  post: () => {
+  post: async () => {
 
   },
 }
