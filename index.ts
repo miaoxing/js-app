@@ -16,7 +16,15 @@ const $ = {
 
   },
   ret: () => {
+    // TODO 细化
+    return {
+      suc: () => {
 
+      },
+      err: () => {
+
+      }
+    }
   },
 
   get: async () => {
