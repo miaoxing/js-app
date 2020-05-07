@@ -9,5 +9,8 @@
     "test": "jest",
     "prepare": "yarn build",
     "lint": "eslint '*/**/*.{js,ts}'"
+  },
+  "devDependencies": {
+    "rimraf": "^3.0.2"
   }
 }
