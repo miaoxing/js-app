@@ -1,6 +1,13 @@
 {
   "name": "miaoxing",
   "version": "1.0.0",
-  "main": "index.js",
-  "license": "MIT"
+  "main": "dist/index.js",
+  "license": "MIT",
+  "scripts": {
+    "build": "yarn clean && tsc",
+    "clean": "rimraf dist coverage",
+    "test": "jest",
+    "prepare": "yarn build",
+    "lint": "eslint '*/**/*.{js,ts}'"
+  }
 }

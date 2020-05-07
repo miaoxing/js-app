@@ -1,3 +1,10 @@
+export interface Ret {
+  code: number,
+  message: string,
+
+  [key: string]: any;
+}
+
 const $ = {
   loading: () => {
 
@@ -15,14 +22,13 @@ const $ = {
   err: () => {
 
   },
-  ret: () => {
-    // TODO 细化
+  ret: (ret: Ret) => {
     return {
-      suc: () => {
-
+      suc: (fn: Function) => {
+        ret.code === 1 && fn();
       },
-      err: () => {
-
+      err: (fn: Function) => {
+        ret.code !== 1 && fn();
       }
     }
   },
