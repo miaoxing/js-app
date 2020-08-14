@@ -20,6 +20,6 @@
     "rimraf": "^3.0.2",
     "ts-jest": "^25.5.0",
     "typescript": "^3.8.3",
-    "miaoxing-coding-standards": "^5.1.2"
+    "@miaoxing/dev": "^6.0.0"
   }
 }
