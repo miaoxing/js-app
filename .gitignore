@@ -1,5 +1,8 @@
-npm-debug.log
 .idea/
-node_modules
+
+# js
+/node_modules/
+/dist/
+/coverage/
+/yarn.lock
 /yarn-error.log
-dist/
