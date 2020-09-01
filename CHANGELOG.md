@@ -1,3 +1,11 @@
+## [0.1.4](https://github.com/miaoxing/miaoxing-js/compare/miaoxing@0.1.3...miaoxing@0.1.4) (2020-09-01)
+
+
+### Features
+
+* 增加 $.http $.patch $.put $.delete 接口 ([7f81bda](https://github.com/miaoxing/miaoxing-js/commit/7f81bdaee4415f04b7e716613f6e7abe4ba85de8))
+* 增加 $.req $.url $.apiUrl 接口 ([1af7c4a](https://github.com/miaoxing/miaoxing-js/commit/1af7c4ad95c3c0ccb85770f5514dfbfcb63d3898))
+
 ## [0.1.3](https://github.com/miaoxing/miaoxing-js/compare/miaoxing@0.1.2...miaoxing@0.1.3) (2020-08-17)
 
 
