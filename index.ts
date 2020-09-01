@@ -50,7 +50,17 @@ const $ = {
   },
   delete: async () => {
 
-  }
+  },
+
+  req: (name: string): string | null => {
+    return null;
+  },
+  url: (): string => {
+    return '';
+  },
+  apiUrl: (): string => {
+    return ''
+  },
 };
 
 const methods = ['get', 'post', 'patch', 'put', 'delete'];
