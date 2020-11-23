@@ -1,8 +1,21 @@
-export interface Ret {
-  code: number,
-  message: string,
+export class Ret {
+  code = -1;
+  // TODO language support
+  message = '很抱歉，系统繁忙，请稍后再试。';
 
   [key: string]: any;
+
+  constructor(ret: object) {
+    Object.assign(this, ret);
+  }
+
+  isSuc() {
+    return this.code === 0;
+  }
+
+  isErr() {
+    return !this.isSuc();
+  }
 }
 
 const $ = {
@@ -25,10 +38,10 @@ const $ = {
   ret: (ret: Ret) => {
     return {
       suc: (fn: Function) => {
-        ret.code === 1 && fn();
+        ret.isSuc() && fn();
       },
       err: (fn: Function) => {
-        ret.code !== 1 && fn();
+        ret.isErr() && fn();
       }
     }
   },
@@ -78,7 +91,7 @@ methods.forEach((method: string) => {
 
     config.method = method;
 
-    return $.http(config);
+    return $.http(config).then((ret: any) => new Ret(ret));
   };
 });
 
