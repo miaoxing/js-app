@@ -1,4 +1,4 @@
-import $ from '../';
+import $, {Ret} from '../';
 
 describe('miaoxing', () => {
   test('loading', async () => {
@@ -31,5 +31,33 @@ describe('miaoxing', () => {
 
   test('post', async () => {
     expect($.post).toBeInstanceOf(Object);
+  });
+
+  test('Ret.suc', () => {
+    const ret = new Ret({code: 0, message: 'Success'});
+    expect(ret.code).toBe(0);
+    expect(ret.message).toBe('Success');
+    expect(ret.isSuc()).toBeTruthy();
+    expect(ret.isErr()).toBeFalsy();
+  });
+
+  test('Ret.err', () => {
+    const ret = new Ret({code: 1, message: 'Error'});
+    expect(ret.code).toBe(1);
+    expect(ret.message).toBe('Error');
+    expect(ret.isErr()).toBeTruthy();
+  });
+
+  test('Ret.err with invalid data', () => {
+    const ret = new Ret(null);
+    expect(ret.code).toBe(-1);
+    expect(ret.isErr()).toBeTruthy();
+  });
+
+  test('Ret.new', () => {
+    const ret = Ret.new({code: 0, message: 'Success'});
+    expect(ret.code).toBe(0);
+    expect(ret.message).toBe('Success');
+    expect(ret.isSuc()).toBeTruthy();
   });
 });
