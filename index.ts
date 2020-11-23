@@ -9,6 +9,10 @@ export class Ret {
     Object.assign(this, ret);
   }
 
+  static new(ret: object) {
+    return new Ret(ret);
+  }
+
   isSuc() {
     return this.code === 0;
   }
