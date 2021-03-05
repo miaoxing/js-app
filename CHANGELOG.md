@@ -1,3 +1,11 @@
+## [0.1.6](https://github.com/miaoxing/miaoxing-js/compare/miaoxing@0.1.5...miaoxing@0.1.6) (2021-03-05)
+
+
+### Features
+
+* **Ret:** 增加 `new` 静态方法，用于创建 `Ret` 类 ([c5d64f3](https://github.com/miaoxing/miaoxing-js/commit/c5d64f34c7cbc12a85ca831abd7884c70a928f44))
+* 增加 `Ret` 类，http 相关接口改为返回 `Ret` 对象，兼容原生对象 ([14b6246](https://github.com/miaoxing/miaoxing-js/commit/14b62464c0b7e5f547f91b15a950f4df66326b19))
+
 ## [0.1.5](https://github.com/miaoxing/miaoxing-js/compare/miaoxing@0.1.4...miaoxing@0.1.5) (2020-09-25)
 
 
