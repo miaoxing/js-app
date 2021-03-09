@@ -1,3 +1,13 @@
+## [0.1.9](https://github.com/miaoxing/miaoxing-js/compare/miaoxing@0.1.8...miaoxing@0.1.9) (2021-03-09)
+
+
+
+
+
+### Dependencies
+
+* **@miaoxing/dev:** upgrade from 6.3.0 to 6.3.1
+
 ## [0.1.8](https://github.com/miaoxing/miaoxing-js/compare/miaoxing@0.1.7...miaoxing@0.1.8) (2021-03-09)
 
 
