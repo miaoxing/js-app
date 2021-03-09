@@ -1,6 +1,6 @@
 {
   "name": "miaoxing",
-  "version": "0.1.7",
+  "version": "0.1.8",
   "main": "dist/index.js",
   "license": "MIT",
   "publishConfig": {
@@ -17,7 +17,7 @@
   "devDependencies": {
     "rimraf": "^3.0.2",
     "typescript": "^3.8.3",
-    "@miaoxing/dev": "^6.2.0"
+    "@miaoxing/dev": "^6.3.0"
   },
   "jest": {
     "preset": "jest-preset-miaoxing"
