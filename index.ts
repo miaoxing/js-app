@@ -1,9 +1,14 @@
-export class Ret {
+interface RetInterface {
+  code: number;
+  message: string;
+
+  [key: string]: any;
+}
+
+export class Ret implements RetInterface {
   code = -1;
   // TODO language support
   message = '很抱歉，系统繁忙，请稍后再试。';
-
-  [key: string]: any;
 
   constructor(ret: object) {
     Object.assign(this, ret);
@@ -39,13 +44,13 @@ const $ = {
   err: () => {
 
   },
-  ret: (ret: Ret) => {
+  ret: (ret: RetInterface) => {
     return {
       suc: (fn: Function) => {
-        ret.isSuc() && fn();
+        ret.code === 0 && fn();
       },
       err: (fn: Function) => {
-        ret.isErr() && fn();
+        ret.code !== 0 && fn();
       }
     }
   },

@@ -25,6 +25,38 @@ describe('miaoxing', () => {
     expect($.ret).toBeInstanceOf(Object);
   });
 
+  test('$.ret(object).suc()', () => {
+    let suc = false;
+    $.ret({code: 0, message: 'ok'}).suc(() => {
+      suc = true;
+    });
+    expect(suc).toBeTruthy();
+  });
+
+  test('$.ret(object).err()', () => {
+    let err = false;
+    $.ret({code: 1, message: 'error'}).err(() => {
+      err = true;
+    });
+    expect(err).toBeTruthy();
+  });
+
+  test('$.ret(Ret).suc()', () => {
+    let suc = false;
+    $.ret(new Ret({code: 0, message: 'ok'})).suc(() => {
+      suc = true;
+    });
+    expect(suc).toBeTruthy();
+  });
+
+  test('$.ret(Ret).err()', () => {
+    let err = false;
+    $.ret(new Ret({code: 1, message: 'error'})).err(() => {
+      err = true;
+    });
+    expect(err).toBeTruthy();
+  });
+
   test('get', async () => {
     expect($.get).toBeInstanceOf(Object);
   });
