@@ -1,3 +1,16 @@
+# [0.2.0](https://github.com/miaoxing/miaoxing-js/compare/miaoxing@0.1.10...miaoxing@0.2.0) (2021-03-11)
+
+
+### Bug Fixes
+
+* `$.http` 改为返回 `Ret` 对象 ([54edf8c](https://github.com/miaoxing/miaoxing-js/commit/54edf8c299c93df342595b3e366975ac8fc85f3c))
+* `$.ret` 允许传入 js 对象 ([618cedb](https://github.com/miaoxing/miaoxing-js/commit/618cedbeb1dcb3bbd77aeea649f19cc4162c662d))
+
+
+### BREAKING CHANGES
+
+* `$.http` 改为返回 `Ret` 对象
+
 ## [0.1.10](https://github.com/miaoxing/miaoxing-js/compare/miaoxing@0.1.9...miaoxing@0.1.10) (2021-03-10)
 
 
