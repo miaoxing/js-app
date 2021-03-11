@@ -56,21 +56,21 @@ const $ = {
   },
 
   http: async (...args: any[]) => {
+    return new Ret({});
+  },
+  get: async (...args: any[]) => {
 
   },
-  get: async () => {
+  post: async (...args: any[]) => {
 
   },
-  post: async () => {
+  patch: async (...args: any[]) => {
 
   },
-  patch: async () => {
+  put: async (...args: any[]) => {
 
   },
-  put: async () => {
-
-  },
-  delete: async () => {
+  delete: async (...args: any[]) => {
 
   },
 
@@ -100,7 +100,7 @@ methods.forEach((method: string) => {
 
     config.method = method;
 
-    return $.http(config).then((ret: any) => new Ret(ret));
+    return $.http(config);
   };
 });
 

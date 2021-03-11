@@ -57,14 +57,6 @@ describe('miaoxing', () => {
     expect(err).toBeTruthy();
   });
 
-  test('get', async () => {
-    expect($.get).toBeInstanceOf(Object);
-  });
-
-  test('post', async () => {
-    expect($.post).toBeInstanceOf(Object);
-  });
-
   test('Ret.suc', () => {
     const ret = new Ret({code: 0, message: 'Success'});
     expect(ret.code).toBe(0);
@@ -91,5 +83,35 @@ describe('miaoxing', () => {
     expect(ret.code).toBe(0);
     expect(ret.message).toBe('Success');
     expect(ret.isSuc()).toBeTruthy();
+  });
+
+  test('http', async () => {
+    const ret = await $.http({});
+    expect(ret).toBeInstanceOf(Ret);
+  });
+
+  test('get', async () => {
+    const ret = await $.get({});
+    expect(ret).toBeInstanceOf(Ret);
+  });
+
+  test('post', async () => {
+    const ret = await $.post({});
+    expect(ret).toBeInstanceOf(Ret);
+  });
+
+  test('patch', async () => {
+    const ret = await $.patch({});
+    expect(ret).toBeInstanceOf(Ret);
+  });
+
+  test('put', async () => {
+    const ret = await $.put({});
+    expect(ret).toBeInstanceOf(Ret);
+  });
+
+  test('delete', async () => {
+    const ret = await $.delete({});
+    expect(ret).toBeInstanceOf(Ret);
   });
 });
