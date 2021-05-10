@@ -1,77 +1,97 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
+
 interface RetInterface {
   code: number;
   message: string;
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   [key: string]: any;
 }
+
+interface ArrayAccess {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  [key: string]: any
+}
+
+interface HttpConfig {
+  url?: string
+  method?: string
+
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  [key: string]: any
+}
+
+type UserRet = Record<string, unknown>;
+
+type CallbackFunction = () => void;
 
 export class Ret implements RetInterface {
   code = -1;
   // TODO language support
   message = '很抱歉，系统繁忙，请稍后再试。';
 
-  constructor(ret: object) {
+  constructor(ret: UserRet) {
     Object.assign(this, ret);
   }
 
-  static new(ret: object) {
+  static new(ret: UserRet): Ret {
     return new Ret(ret);
   }
 
-  isSuc() {
+  isSuc(): boolean {
     return this.code === 0;
   }
 
-  isErr() {
+  isErr(): boolean {
     return !this.isSuc();
   }
 }
 
 const $ = {
   loading: () => {
-
+    // to be implemented by other packages
   },
   alert: () => {
-
+    // to be implemented by other packages
   },
   confirm: () => {
-
+    // to be implemented by other packages
   },
 
   suc: () => {
-
+    // to be implemented by other packages
   },
   err: () => {
-
+    // to be implemented by other packages
   },
   ret: (ret: RetInterface) => {
     return {
-      suc: (fn: Function) => {
+      suc: (fn: CallbackFunction) => {
         ret.code === 0 && fn();
       },
-      err: (fn: Function) => {
+      err: (fn: CallbackFunction) => {
         ret.code !== 0 && fn();
-      }
-    }
+      },
+    };
   },
 
   http: async (...args: any[]) => {
     return new Ret({});
   },
   get: async (...args: any[]) => {
-
+    // to be implemented by other packages
   },
   post: async (...args: any[]) => {
-
+    // to be implemented by other packages
   },
   patch: async (...args: any[]) => {
-
+    // to be implemented by other packages
   },
   put: async (...args: any[]) => {
-
+    // to be implemented by other packages
   },
   delete: async (...args: any[]) => {
-
+    // to be implemented by other packages
   },
 
   req: (name: string): string | null => {
@@ -81,26 +101,24 @@ const $ = {
     return '';
   },
   apiUrl: (): string => {
-    return ''
+    return '';
   },
-};
+} as ArrayAccess;
 
-const methods = ['get', 'post', 'patch', 'put', 'delete'];
-methods.forEach((method: string) => {
-  // @ts-ignore
-  $[method] = async (...args: any[]) => {
-    let config;
+['get', 'post', 'patch', 'put', 'delete'].forEach((method: string) => {
+  $[method] = async (urlOrConfig: string | HttpConfig, config: HttpConfig) => {
+    let conf: HttpConfig;
 
-    if (typeof args[0] === 'string') {
-      config = args[1] || {};
-      config.url = args[0];
+    if (typeof urlOrConfig === 'string') {
+      conf = config || {};
+      conf.url = urlOrConfig;
     } else {
-      config = args[0];
+      conf = urlOrConfig;
     }
 
-    config.method = method;
+    conf.method = method;
 
-    return $.http(config);
+    return $.http(conf);
   };
 });
 
