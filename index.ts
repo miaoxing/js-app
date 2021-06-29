@@ -76,7 +76,9 @@ const $ = {
   },
 
   http: async (...args: any[]) => {
-    return new Ret({});
+    return {
+      ret: new Ret({}),
+    };
   },
   get: async (...args: any[]) => {
     // to be implemented by other packages
