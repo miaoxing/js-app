@@ -86,32 +86,32 @@ describe('miaoxing', () => {
   });
 
   test('http', async () => {
-    const ret = await $.http({});
+    const {ret} = await $.http({});
     expect(ret).toBeInstanceOf(Ret);
   });
 
   test('get', async () => {
-    const ret = await $.get({});
+    const {ret} = await $.get({});
     expect(ret).toBeInstanceOf(Ret);
   });
 
   test('post', async () => {
-    const ret = await $.post({});
+    const {ret} = await $.post({});
     expect(ret).toBeInstanceOf(Ret);
   });
 
   test('patch', async () => {
-    const ret = await $.patch({});
+    const {ret} = await $.patch({});
     expect(ret).toBeInstanceOf(Ret);
   });
 
   test('put', async () => {
-    const ret = await $.put({});
+    const {ret} = await $.put({});
     expect(ret).toBeInstanceOf(Ret);
   });
 
   test('delete', async () => {
-    const ret = await $.delete({});
+    const {ret} = await $.delete({});
     expect(ret).toBeInstanceOf(Ret);
   });
 });
