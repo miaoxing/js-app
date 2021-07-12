@@ -57,6 +57,14 @@ export class Ret implements RetInterface {
     return this.new().buildRet(message, code || RetConfig.defaultErrCode);
   }
 
+  static isSuc(ret: UserRet) {
+    return this.new(ret).isSuc();
+  }
+
+  static isErr(ret: UserRet) {
+    return !this.isSuc(ret);
+  }
+
   isSuc(): boolean {
     return this.code === RetConfig.defaultSucCode;
   }
