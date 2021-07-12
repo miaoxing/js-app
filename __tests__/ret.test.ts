@@ -53,4 +53,16 @@ describe('Ret', () => {
     expect(ret.data).toBe('test');
     expect(ret.isSuc()).toBeFalsy();
   });
+
+  test('Ret.isSuc', () => {
+    expect(Ret.isSuc({code: 0, message: 'suc'})).toBeTruthy();
+    expect(Ret.isSuc({code: 0})).toBeTruthy();
+  });
+
+  test('Ret.isErr', () => {
+    expect(Ret.isErr({code: 1, message: 'err'})).toBeTruthy();
+    expect(Ret.isErr({code: -1})).toBeTruthy();
+    expect(Ret.isErr({})).toBeTruthy();
+    expect(Ret.isErr(null)).toBeTruthy();
+  });
 });
