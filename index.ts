@@ -25,25 +25,59 @@ type UserRet = Record<string, unknown>;
 
 type CallbackFunction = () => void;
 
-export class Ret implements RetInterface {
-  code = -1;
-  // TODO language support
-  message = '很抱歉，系统繁忙，请稍后再试。';
+// TODO allow global config
+const RetConfig = {
+  defaultSucCode: 0,
+  defaultSucMessage: '操作成功',
+  defaultErrCode: -1,
+  defaultErrMessage: '很抱歉，系统繁忙，请稍后再试。',
+};
 
-  constructor(ret: UserRet) {
-    Object.assign(this, ret);
+export class Ret implements RetInterface {
+  [x: string]: any;
+
+  code = RetConfig.defaultErrCode;
+  message = RetConfig.defaultErrMessage;
+
+  constructor(ret?: UserRet) {
+    if (ret) {
+      Object.assign(this, ret);
+    }
   }
 
-  static new(ret: UserRet): Ret {
+  static new(ret?: UserRet): Ret {
     return new Ret(ret);
   }
 
+  static suc(message?: UserRet | string): Ret {
+    return this.new().buildRet(message || RetConfig.defaultSucMessage);
+  }
+
+  static err(message: UserRet | string, code?: number): Ret {
+    return this.new().buildRet(message, code || RetConfig.defaultErrCode);
+  }
+
   isSuc(): boolean {
-    return this.code === 0;
+    return this.code === RetConfig.defaultSucCode;
   }
 
   isErr(): boolean {
     return !this.isSuc();
+  }
+
+  private buildRet(message: UserRet | string, code?: number): Ret {
+    if (typeof code === 'undefined') {
+      code = RetConfig.defaultSucCode;
+    }
+
+    let data;
+    if (typeof message === 'string') {
+      data = {message, code};
+    } else {
+      data = {message: RetConfig.defaultSucMessage, code, ...message}
+    }
+    Object.assign(this, data);
+    return this;
   }
 }
 
